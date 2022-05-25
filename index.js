@@ -31,18 +31,7 @@ const run = async () => {
       res.send(cursor);
     });
 
-    app.get("/products/:id", async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: ObjectId(id) };
-      const cursor = await productCollection.findOne(query);
-      res.send(cursor);
-    });
-
-    app.post("/products", async (req, res) => {
-      const data = req.body;
-      const result = await productCollection.insertOne(data);
-      res.send(result);
-    });
+    
 
     // user /review
     // http://localhost:5000/review
