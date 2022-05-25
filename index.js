@@ -46,7 +46,17 @@ const run = async () => {
 
     // user /review
     // http://localhost:5000/review
-    
+    app.get("/review", async (req, res) => {
+      const query = {};
+      const cursor = await reviewCollection.find(query).toArray();
+      res.send(cursor);
+    });
+
+    app.post("/review", async (req, res) => {
+      const data = req.body;
+      const result = await reviewCollection.insertOne(data);
+      res.send(result);
+    });
     console.log("connect");
   } finally {
   }
