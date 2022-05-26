@@ -26,8 +26,7 @@ const run = async () => {
     const orderCollection = client.db("Toolkits").collection("order");
     const profileCollection = client.db('Toolkits').collection('profile')
 
-    // all product
-    // http://localhost:5000/products
+    
     app.get("/products", async (req, res) => {
       const cursor = await productCollection.find({}).toArray();
       res.send(cursor);
