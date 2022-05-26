@@ -24,6 +24,7 @@ const run = async () => {
     const reviewCollection = client.db("Toolkits").collection("user");
     const productCollection = client.db("Toolkits").collection("product");
     const orderCollection = client.db("Toolkits").collection("order");
+    const profileCollection = client.db('Toolkits').collection('profile')
 
     // all product
     // http://localhost:5000/products
@@ -90,6 +91,12 @@ const run = async () => {
       const result = await productCollection.deleteOne(query);
       res.send(result);
     });
+
+    app.post("/profile", async (req, res) => {
+      const user = req.body;
+      const result = await profileCollection.insertOne(user)
+      res.send(result);
+    })
 
     console.log("connect");
   } finally {
