@@ -46,8 +46,7 @@ const run = async () => {
       res.send(result);
     });
 
-    // user /review
-    // http://localhost:5000/review
+  
     app.get("/review", async (req, res) => {
       const query = {};
       const cursor = await reviewCollection.find(query).toArray();
